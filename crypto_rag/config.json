@@ -1,0 +1,12 @@
+{
+  "database": {
+    "username": "<your_username>",
+    "password": "<your_password>",
+    "host": "localhost",
+    "port": "5432",
+    "dbname": "crypto_rag_db"
+  },
+  "ollama": {
+    "model": "deepseek-r1:7b"
+  }
+}
