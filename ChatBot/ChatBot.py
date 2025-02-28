@@ -1,6 +1,6 @@
 # ChatBot.py
 from typing import Annotated, Literal
-from langchain_community.chat_models import ChatOllama
+from langchain_ollama import ChatOllama
 from langgraph.graph import StateGraph, START, END
 from langgraph.graph.message import add_messages
 from typing_extensions import TypedDict
@@ -19,20 +19,20 @@ class ChatBot:
         self.model_name = config.get("MODEL_NAME", "deepseek-r1:7b")
         self.tools_enabled = config.get("TOOLS_ENABLED", False)
 
-        # 初始化模型
-        self.llm_model = ChatOllama(model=self.model_name, streaming=True)
-        self.chat_model = self._configure_model()
-
         # 初始化工具
         self.tools = [TavilySearchResults(max_results=2)] if self.tools_enabled else []
         self.tool_node = BasicToolNode(tools=self.tools) if self.tools_enabled else None
+
+        # 初始化模型
+        self.llm_model = ChatOllama(model=self.model_name, streaming=True)
+        self.chat_model = self._configure_model()
 
         # 构建状态图
         self.graph = self._build_graph()
 
     def _configure_model(self):
         """根据模型类型配置 chat_model"""
-        if self.model_type == "ollama" or not self.tools_enabled:
+        if not self.tools_enabled:
             return self.llm_model  # Ollama 不需要绑定工具
         return self.llm_model.bind_tools(self.tools)  # 其他模型绑定工具
 

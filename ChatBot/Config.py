@@ -4,7 +4,7 @@ import json
 from dotenv import load_dotenv
 
 class Config:
-    def __init__(self, env_path="langsmith.env", config_path="config.json"):
+    def __init__(self, env_path="3pp_config.env", config_path="config.json"):
         # 加载 LangSmith 的 .env 配置
         load_dotenv(dotenv_path=env_path)
 

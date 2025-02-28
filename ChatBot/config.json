@@ -1,5 +1,5 @@
 {
   "MODEL_TYPE": "ollama",
-  "MODEL_NAME": "deepseek-r1:7b",
-  "TOOLS_ENABLED": false
+  "MODEL_NAME": "llama3.1",
+  "TOOLS_ENABLED": true
 }
