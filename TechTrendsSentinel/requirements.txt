@@ -1,0 +1,9 @@
+requests
+openai
+gradio
+loguru
+schedule
+markdown2
+langchain
+langchain-community
+pgvector
